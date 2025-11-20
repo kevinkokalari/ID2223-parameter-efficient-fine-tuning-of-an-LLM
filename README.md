@@ -1,1 +1,1 @@
-# ID2223-parameter-e-cient-fine-tuning-of-an-LLM
+# ID2223 Parameter Efficient Fine-Tuning of an LLM
