@@ -8,7 +8,7 @@ The second part of the project investigates ways to improve scalability and perf
 
 ## Tasks:
 
-***Task 1: Fine-tune a model for language transcription, add a UI***
+### *Task 1: Fine-tune a model for language transcription, add a UI*
 1. Fine-Tune a pre-trained large language (transformer) model and build a serverless UI for using that model
 2. Create a free account on huggingface.com
 3. Create a free account on google.com for Colab
@@ -18,11 +18,13 @@ The second part of the project investigates ways to improve scalability and perf
     - If you want to get the highest grade (A), come up with your own creative idea for how to allow people to use your fine tuned LLM
 
 
-***Task 2: Improve pipeline scalability and model performance***
+
+
+### *Task 2: Improve pipeline scalability and model performance*
 1. Describe in the ways in which you can improve model performance are using:
-   - a) model-centric approach - e.g., tune hyperparameters, change the fine-tuning model architecture, etc
-   - b) data-centric approach - identify new data sources that enable you to train a better model that one provided in the blog post
-   - If you can show results of improvement, then you get the top grade
+   - **(a)** ***Model-centric approach*** - e.g., tune hyperparameters, change the fine-tuning model architecture, etc.
+   - **(b)** ***Data-centric approach*** - identify new data sources that enable you to train a better model that one provided in the blog post
+   - *If you can show results of improvement, then you get the top grade*
 2. Try out fine-tuning a couple of different open-source foundation LLMs to get one that works best with your UI for inference (inference will be on CPUs, so big models will be slow).
 3. You are free to use other fine-tuning frameworks, such as Axolotl of HF FineTuning - you do not have to use the provided unsloth notebook.
 
