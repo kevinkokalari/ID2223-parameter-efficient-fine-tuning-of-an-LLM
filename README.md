@@ -1,6 +1,6 @@
 # ID2223 Parameter Efficient Fine-Tuning of an LLM
 
-This project explores parameter-efficient fine-tuning (PEFT) of an open-source LLM using LoRA. Fine-tuning was performed on a Google Colab T4 GPU, with multiple checkpoints saved during training. The resulting model is deployed on Hugging Face Spaces using a modified version of Hugging Face’s Gradio chatbot template.
+This project explores parameter-efficient fine-tuning (PEFT) of an open-source LLM using LoRA. Fine-tuning was performed on a Google Colab T4 GPU, with multiple checkpoints saved in a private Google Drive folder during training. The resulting model is deployed on Hugging Face Spaces using a modified version of Hugging Face’s Gradio chatbot template.
 
 The fine-tuned model is used in an email improvement application, presented in a UI. It uses sentiment analysis, a politeness classifier and the fine-tuned LLM to correct and improve emails. Since Hugging Face Spaces runs CPU inference on the free tier, the trained model must be converted into a CPU-friendly format after training.
 
@@ -111,7 +111,7 @@ The model fine-tuned on the grammar dataset was then evaluated using 10 sentence
 ## Fine-tuning different LLM
 ----
 
-We also...
+In addition to the Llama-3.2-1B-Instruct model, we also tried fine-tuning the Llama-3.2-3B-Instruct model. However this model has more parameters and training was therefore very time-consuming. For this reason, the model with 1B parameters was used for the assignment.
 
 ----
 ## References
