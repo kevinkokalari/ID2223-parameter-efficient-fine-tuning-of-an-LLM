@@ -44,15 +44,17 @@ For generation, the app downloads a fine-tuned GGUF model from a Hugging Face mo
 
 To fine-tune model parameters, we used the multi-fidelity optimization method Successive Halving Algorithm, or SHA. This decision was made because fine-tuning is very time-consuming. To narrow the scope, the six parameters below were varied:
 
-LoRA parameters:
-- Rank
-- Alpha
-- Dropout
+- **LoRA (Low-Rank Adaptation)** is a parameter-efficent fine-tuning method where you freeze the original model weights and train only on a small subset of parameters, which are then injected into seleced layers of the network. This enables faster task adaptation with far fewer trainable parameters and much less GPU memory than full fledged fine-tuning.
 
-Training parameters:
-- Learning rate
-- Batch size
-- Gradient accumulation steps
+**LoRA parameters:**
+- *Rank (r):*  The size of the low-rank adapter matrices. Higher r leads to more trainable capacity and more computations.
+- *Alpha:* Scaling factor that controls the effective strength of the LoRA update. It usually behaves like a multiplier, relative to r.
+- *Dropout:* Dropout applied to LoRA during training to reduce the overfitting risk.
+
+**Training parameters:**
+- *Learning rate*
+- *Batch size:* The number of training samples the model processes at once before computing a gradient.
+- *Gradient accumulation steps:* How many mini-batches you accumulate gradients on before doing an optimization step. This let's us simulate a larger batch size with less memory available.
 
 Six different parameter configurations were tested, derived by explaining the experimental setup to Copilot and requesting suggestions for interesting configurations to try. The resulting configurations are presented below.
 
@@ -65,11 +67,13 @@ Six different parameter configurations were tested, derived by explaining the ex
 | 5    |     2e-4     |     32     |      2    |     16     |      16    |    0      |
 | 6    |     5e-4     |      12    |     4     |     8     |     8     |    0      |
 
-In the first step, training was conducted for 80 steps and training loss was tracked at five-step intervals. The resulting graph can be seen below.
+In the first step, the training was conducted over 80 steps and training loss was tracked at five-step intervals. The resulting graph can be seen below.
+
+![Training Loss Graph, 80 steps](images/First iteration, 80 steps.png)
 
 When halving the number of parameters, the tree best configurations were selected. Configurations 1,5 and 6 achieved the lowest overall training loss, including at the final step. They were retrained for 160 steps. The training loss was tracked every 10 steps and the results can be seen below. The results for configuration 1 and 5 were very similar, causing the red line to overlap the blue in this overview graph.
 
-
+![Training Loss Graph, 160 steps](images/Second iteration, 160 steps.png)
 
 In addition to evaluating training loss, the duration of training was also noted, since time was a limited resource. Consequently, time was another parameter considered when selecting which parameter configuration to use for the final fine-tuning. However, the results proved somewhat unpredictable, perhaps indicating that factors other than the parameters impacted this result. Nevertheless, the training time was still taken into account when evaluating.
 
@@ -82,7 +86,7 @@ In addition to evaluating training loss, the duration of training was also noted
 | 5    |     21     |     42     |
 | 6    |     15     |     29     |
 
-After doing these experiments, it was decided to use configuration 1 for the full fine-tuning of all 100k rows. This was due to its low training loss and time-efficient training.
+After doing these experiments, it was decided to use configuration 1 for the full fine-tuning with all 100k rows. This was due to its low training loss and time-efficient training.
 
 
 ----
