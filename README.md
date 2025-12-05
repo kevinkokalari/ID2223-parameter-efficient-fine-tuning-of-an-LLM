@@ -15,32 +15,6 @@ The second part of the project investigates ways to improve scalability and perf
 
 ***Model Fine-tuned on 2k_grammar_corrections*** [HuggingFace Model Repo](https://huggingface.co/greenie-sweden/llm-fine-tuned-for-grammar)
 
----
-
-
-
-## Tasks:
-
-### *Task 1: Fine-tune a model for language transcription, add a UI*
-1. Fine-Tune a pre-trained large language (transformer) model and build a serverless UI for using that model
-2. Create a free account on huggingface.com
-3. Create a free account on google.com for Colab
-4. Fine-tune an existing pre-trained large language model on the FineTome Instruction Dataset
-5. Build and run an inference pipeline with a Gradio UI on Hugging Face Spaces for your model.
-    - Communicate the value of your model to stakeholders with an app/service that uses the fine tuned LLM to make value-added decisions
-    - If you want to get the highest grade (A), come up with your own creative idea for how to allow people to use your fine tuned LLM
-
-
-
-
-### *Task 2: Improve pipeline scalability and model performance*
-1. Describe in the ways in which you can improve model performance are using:
-   - **(a)** ***Model-centric approach*** - e.g., tune hyperparameters, change the fine-tuning model architecture, etc.
-   - **(b)** ***Data-centric approach*** - identify new data sources that enable you to train a better model that one provided in the blog post
-   - *If you can show results of improvement, then you get the top grade*
-2. Try out fine-tuning a couple of different open-source foundation LLMs to get one that works best with your UI for inference (inference will be on CPUs, so big models will be slow).
-3. You are free to use other fine-tuning frameworks, such as Axolotl of HF FineTuning - you do not have to use the provided unsloth notebook.
-
 -----
 # Task 1: Fine-tuned model and UI
 
@@ -99,6 +73,11 @@ In addition to evaluating training loss, the duration of training was also noted
 
 After doing these experiments, it was decided to use configuration 1 for the full fine-tuning with all 100k rows. This was due to its low training loss and time-efficient training.
 
+----
+### Fine-tuning different LLM
+----
+
+In addition to the Llama-3.2-1B-Instruct model, we also tried fine-tuning the Llama-3.2-3B-Instruct model. However this model has more parameters and training was therefore very time-consuming. For this reason, the model with 1B parameters was used for the assignment.
 
 ----
 ## Data-centric adjustments
@@ -130,12 +109,6 @@ The new model produced only one incorrect correction, which was on one of the ge
 | FineTome-100k fine-tuned    |     55%     |
 | Original    |     73%     |
 
-
-----
-## Fine-tuning different LLM
-----
-
-In addition to the Llama-3.2-1B-Instruct model, we also tried fine-tuning the Llama-3.2-3B-Instruct model. However this model has more parameters and training was therefore very time-consuming. For this reason, the model with 1B parameters was used for the assignment.
 
 ----
 ## References
