@@ -73,9 +73,8 @@ In addition to evaluating training loss, the duration of training was also noted
 
 After doing these experiments, it was decided to use configuration 1 for the full fine-tuning with all 100k rows. This was due to its low training loss and time-efficient training.
 
-----
+
 ### Fine-tuning different LLM
-----
 
 In addition to the Llama-3.2-1B-Instruct model, we also tried fine-tuning the Llama-3.2-3B-Instruct model. However this model has more parameters and training was therefore very time-consuming. For this reason, the model with 1B parameters was used for the assignment.
 
