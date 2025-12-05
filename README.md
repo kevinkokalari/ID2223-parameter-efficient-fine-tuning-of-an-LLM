@@ -116,7 +116,20 @@ Furthermore, fine-tuning using a dataset of private data would also complement t
 
 Depending on the initial training data for llama-3.2, it is also possible that using datasets with specific domain knowledge would improve the chatbot, enabling it to give better answers in that area. For instance, this github proposing SFT-datasets for LLMs [[8](https://github.com/mlabonne/llm-datasets?tab=readme-ov-file)] suggests the dataset synthetic_text_to_sql [[9](https://huggingface.co/datasets/gretelai/synthetic_text_to_sql)] to improve coding knowledge. In the case of the implemented UI in this assignment, utilizing sentiment analysis and an LLM to analyze and improve emails, we fine-tune the llama3.2 model on the dataset 2k_grammar_corrections [[10](https://huggingface.co/datasets/ambrosfitz/2k_grammar_corrections)] intended to improve grammars. This dataset has an mit license and contains sentences with grammatical errors and corresponding correct sentences.
 
-The model fine-tuned on the grammar dataset was then evaluated using 10 sentences from its training data and 12 sentences generated using Copilot. The results show that the fine-tuned model performed better than both the original model and the model fine-tuned on the Fine-Tome dataset. The new model only got one sentence wrong, which was one of the generated sentences, resulting in an accuracy of 95%. The original model got 6 sentences wrong, 2 from the training dataset and 4 from the generated sentences, resulting in an accuracy of 73%. Thus, it can be concluded that fine-tuning on a domain-specific grammar task was successful.
+The model fine-tuned on the grammar dataset was then evaluated on 10 sentences from its training data and 12 sentences generated with Copilot. Examples of generated sentences can be seen below.
+
+![Example sentences](images/ex_sentences.png)
+
+The same evaluation was conducted on both the original model and the model fine-tuned on the FineTome-100k. The results show that the fine-tuned model performed better than both the original model and the model fine-tuned on the FineTome dataset. 
+
+The new model produced only one incorrect correction, which was on one of the generated sentences, resulting in an accuracy of 95%. Meanwhile, the other fine-tuned model 10 sentences wrong, 4 from the training dataset and 6 from the generated sentences. Finally, the original model got 6 sentences wrong, 2 from the training dataset and 4 from the generated sentences. Thus, it can be concluded that fine-tuning on a domain-specific grammar task was successful. An overview of the results is presented below.
+
+| Model | % successfully corrected sentences |
+|----------|----------|
+| Grammar fine-tuned    |    95%      |
+| FineTome-100k fine-tuned    |     55%     |
+| Original    |     73%     |
+
 
 ----
 ## Fine-tuning different LLM
