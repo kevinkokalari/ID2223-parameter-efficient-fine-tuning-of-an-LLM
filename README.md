@@ -69,9 +69,11 @@ Six different parameter configurations were tested, derived by explaining the ex
 
 In the first step, the training was conducted over 80 steps and training loss was tracked at five-step intervals. The resulting graph can be seen below.
 
+![Training Loss Graph, 80 steps](images/First iteration, 80 steps.png)
+
 When halving the number of parameters, the tree best configurations were selected. Configurations 1,5 and 6 achieved the lowest overall training loss, including at the final step. They were retrained for 160 steps. The training loss was tracked every 10 steps and the results can be seen below. The results for configuration 1 and 5 were very similar, causing the red line to overlap the blue in this overview graph.
 
-
+![Training Loss Graph, 160 steps](images/Second iteration, 160 steps.png)
 
 In addition to evaluating training loss, the duration of training was also noted, since time was a limited resource. Consequently, time was another parameter considered when selecting which parameter configuration to use for the final fine-tuning. However, the results proved somewhat unpredictable, perhaps indicating that factors other than the parameters impacted this result. Nevertheless, the training time was still taken into account when evaluating.
 
@@ -84,7 +86,7 @@ In addition to evaluating training loss, the duration of training was also noted
 | 5    |     21     |     42     |
 | 6    |     15     |     29     |
 
-After doing these experiments, it was decided to use configuration 1 for the full fine-tuning of all 100k rows. This was due to its low training loss and time-efficient training.
+After doing these experiments, it was decided to use configuration 1 for the full fine-tuning with all 100k rows. This was due to its low training loss and time-efficient training.
 
 
 ----
