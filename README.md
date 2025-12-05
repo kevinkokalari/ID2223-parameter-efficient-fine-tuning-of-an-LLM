@@ -45,14 +45,14 @@ For generation, the app downloads a fine-tuned GGUF model from a Hugging Face mo
 To fine-tune model parameters, we used the multi-fidelity optimization method Successive Halving Algorithm, or SHA. This decision was made because fine-tuning is very time-consuming. To narrow the scope, the six parameters below were varied:
 
 LoRA parameters:
-Rank
-Alpha
-Dropout
+- Rank
+- Alpha
+- Dropout
 
 Training parameters:
-Learning rate
-Batch size
-Gradient accumulation steps
+- Learning rate
+- Batch size
+- Gradient accumulation steps
 
 Six different parameter configurations were tested, derived by explaining the experimental setup to Copilot and requesting suggestions for interesting configurations to try. The resulting configurations are presented below.
 
