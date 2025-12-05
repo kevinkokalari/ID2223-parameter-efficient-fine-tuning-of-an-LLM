@@ -44,15 +44,17 @@ For generation, the app downloads a fine-tuned GGUF model from a Hugging Face mo
 
 To fine-tune model parameters, we used the multi-fidelity optimization method Successive Halving Algorithm, or SHA. This decision was made because fine-tuning is very time-consuming. To narrow the scope, the six parameters below were varied:
 
+- LoRA (Low-Rank Adaptation) is a parameter-efficent fine-tuning method where you freeze the original model weights and train only on a small subset of parameters, which are then injected into seleced layers of the network. This enables faster task adaptation with far fewer trainable parameters and much less GPU memory than full fledged fine-tuning.
+
 LoRA parameters:
-- Rank
-- Alpha
-- Dropout
+- *Rank (r):*  The size of the low-rank adapter matrices. Higher r leads to more trainable capacity and more computations.
+- *Alpha:* Scaling factor that controls the effective strength of the LoRA update. It usually behaves like a multiplier, relative to r.
+- *Dropout:* Dropout applied to LoRA during training to reduce the overfitting risk.
 
 Training parameters:
-- Learning rate
-- Batch size
-- Gradient accumulation steps
+- *Learning rate*
+- *Batch size:* The number of training samples the model processes at once before computing a gradient.
+- *Gradient accumulation steps:* How many mini-batches you accumulate gradients on before doing an optimization step. This let's us simulate a larger batch size with less memory available.
 
 Six different parameter configurations were tested, derived by explaining the experimental setup to Copilot and requesting suggestions for interesting configurations to try. The resulting configurations are presented below.
 
