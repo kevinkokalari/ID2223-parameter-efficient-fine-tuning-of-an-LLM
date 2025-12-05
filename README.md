@@ -67,7 +67,7 @@ Six different parameter configurations were tested, derived by explaining the ex
 | 5    |     2e-4     |     32     |      2    |     16     |      16    |    0      |
 | 6    |     5e-4     |      12    |     4     |     8     |     8     |    0      |
 
-In the first step, training was conducted for 80 steps and training loss was tracked at five-step intervals. The resulting graph can be seen below.
+In the first step, the training was conducted over 80 steps and training loss was tracked at five-step intervals. The resulting graph can be seen below.
 
 When halving the number of parameters, the tree best configurations were selected. Configurations 1,5 and 6 achieved the lowest overall training loss, including at the final step. They were retrained for 160 steps. The training loss was tracked every 10 steps and the results can be seen below. The results for configuration 1 and 5 were very similar, causing the red line to overlap the blue in this overview graph.
 
