@@ -122,7 +122,7 @@ The model fine-tuned on the grammar dataset was then evaluated on 10 sentences f
 
 The same evaluation was conducted on both the original model and the model fine-tuned on the FineTome-100k. The results show that the fine-tuned model performed better than both the original model and the model fine-tuned on the FineTome dataset. 
 
-The new model produced only one incorrect correction, which was on one of the generated sentences, resulting in an accuracy of 95%. Meanwhile, the other fine-tuned model 10 sentences wrong, 4 from the training dataset and 6 from the generated sentences. Finally, the original model got 6 sentences wrong, 2 from the training dataset and 4 from the generated sentences. Thus, it can be concluded that fine-tuning on a domain-specific grammar task was successful. An overview of the results is presented below.
+The new model produced only one incorrect correction, which was on one of the generated sentences, resulting in an accuracy of 95%. Meanwhile, the other fine-tuned model got 10 sentences wrong, 4 from the training dataset and 6 from the generated sentences. Finally, the original model got 6 sentences wrong, 2 from the training dataset and 4 from the generated sentences. Thus, it can be concluded that fine-tuning on a domain-specific grammar task was successful. An overview of the results is presented below.
 
 | Model | % successfully corrected sentences |
 |----------|----------|
