@@ -6,6 +6,19 @@ The fine-tuned model is used in an email improvement application, presented in a
 
 The second part of the project investigates ways to improve scalability and performance through model-centric (hyperparameters / training setup) and data-centric (dataset quality / new data) approaches, focusing on better end-to-end inference behavior.
 
+---
+## HuggingFace Resources (Repos and Spaces)
+
+***Email Proofreader:*** [HuggingFace Spaces](https://huggingface.co/spaces/greenie-sweden/chatbot-for-fine-tuned-llm)
+
+***Model Fine-tuned on FineTome-100k:*** [HuggingFace Model Repo](https://huggingface.co/greenie-sweden/chatbot-for-fine-tuned-llm)
+
+***Model Fine-tuned on 2k_grammar_corrections*** [HuggingFace Model Repo](https://huggingface.co/greenie-sweden/llm-fine-tuned-for-grammar)
+
+---
+
+
+
 ## Tasks:
 
 ### *Task 1: Fine-tune a model for language transcription, add a UI*
@@ -35,8 +48,6 @@ The app.py code implements a small web app which helps us demonstrate different 
 
 For generation, the app downloads a fine-tuned GGUF model from a Hugging Face model repository, and then runs inference locally through llama.cpp on the host’s CPU. The model’s system prompt is created so that the model only rewrites the email when needed while keeping its original meaning, structure and formatting. This is decided based on the original email’s grammar, clarity, sentiment, and politeness tone. The UI also exposes generation controls for the user to change at their will. Finally, the rewritten email is re-scored and shown to the user.
 
-***Email Proofreader:*** [HuggingFace Spaces](https://huggingface.co/spaces/greenie-sweden/chatbot-for-fine-tuned-llm)
-
 # Task 2: Ways to improve the fine tuning
 
 ## Model-centric adjustments
@@ -58,7 +69,7 @@ To fine-tune model parameters, we used the multi-fidelity optimization method Su
 
 Six different parameter configurations were tested, derived by explaining the experimental setup to Copilot and requesting suggestions for interesting configurations to try. The resulting configurations are presented below.
 
-| Configuration nr | Learning Rate | Per-device Train Batch Size | Gradient Accumulation Steps | r | LoRA Alpha | LoRA Dropout |
+| Configuration nr | Learning Rate | Per-device Train Batch Size | Gradient Accumulation Steps | LoRA Rank (r) | LoRA Alpha | LoRA Dropout |
 |----------|----------|----------|----------|----------|----------|----------|
 | 1    |    2e-4      |    16      |     4     |    8      |     16     |     0     |
 | 2    |     2e-4     |     16     |     2     |    8      |     16     |     0     |
