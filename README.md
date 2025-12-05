@@ -67,7 +67,7 @@ Did SHA, following parameters...
 ## Data-centric adjustments
 ----
 
-The chosen model, unsloth/Llama-3.2-1B-Instruct, was initially fine-tuned with the dataset FineTome-100k. It was created by extracting a subset from the dataset acree-ai/The-Tome [1](https://huggingface.co/datasets/mlabonne/FineTome-100k). This dataset specifically targets the ability to follow instructions and is used for LLM training [[2](https://huggingface.co/datasets/arcee-ai/The-Tome/blob/main/README.md)].
+The chosen model, unsloth/Llama-3.2-1B-Instruct, was initially fine-tuned with the dataset FineTome-100k. It was created by extracting a subset from the dataset acree-ai/The-Tome [[1](https://huggingface.co/datasets/mlabonne/FineTome-100k)]. This dataset specifically targets the ability to follow instructions and is used for LLM training [[2](https://huggingface.co/datasets/arcee-ai/The-Tome/blob/main/README.md)].
 
 When adopting a data centric approach and identifying a dataset for training a better model, this is of course dependent on what the end goal is. The point of fine-tuning is complementing the original model with data it was not trained on, for instance private data or data with information from after the cut-off date. Thus, the key is to figure out the purpose of the fine-tuning and what fine-tuning the original model would benefit from. The model that is fine-tuned in this assignment is the llama-3.2-1B-Instruct model. Information about the model was found here: [[3](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct)].
 
