@@ -44,21 +44,21 @@ For generation, the app downloads a fine-tuned GGUF model from a Hugging Face mo
 
 To fine-tune model parameters, we used the multi-fidelity optimization method Successive Halving Algorithm, or SHA. This decision was made because fine-tuning is very time-consuming. To narrow the scope, the six parameters below were varied:
 
-- **LoRA (Low-Rank Adaptation)** is a parameter-efficent fine-tuning method where you freeze the original model weights and train only on a small subset of parameters, which are then injected into seleced layers of the network. This enables faster task adaptation with far fewer trainable parameters and much less GPU memory than full fledged fine-tuning.
+- **LoRA (Low-Rank Adaptation)** is a parameter-efficent fine-tuning method where you freeze the original model weights and train only on a small subset of parameters, which are then injected into seleced layers of the network. This enables faster task adaptation with far fewer trainable parameters and much less GPU memory than full fledged fine-tuning. [[11](https://arxiv.org/abs/2106.09685)]
 
 **LoRA parameters:**
-- *Rank (r):*  The size of the low-rank adapter matrices. Higher r leads to more trainable capacity and more computations.
-- *Alpha:* Scaling factor that controls the effective strength of the LoRA update. It usually behaves like a multiplier, relative to r.
-- *Dropout:* Dropout applied to LoRA during training to reduce the overfitting risk.
+- *Rank (r):*  The size of the low-rank adapter matrices. Higher r leads to more trainable capacity and more computations. [[12](https://huggingface.co/docs/peft/en/package_reference/lora)]
+- *Alpha:* Scaling factor that controls the effective strength of the LoRA update. It usually behaves like a multiplier, relative to r. [[12](https://huggingface.co/docs/peft/en/package_reference/lora)]
+- *Dropout:* Dropout applied to LoRA during training to reduce the overfitting risk. [[12](https://huggingface.co/docs/peft/en/package_reference/lora)] [[16](https://jmlr.org/papers/v15/srivastava14a.html)]
 
 **Training parameters:**
-- *Learning rate*
-- *Batch size:* The number of training samples the model processes at once before computing a gradient.
-- *Gradient accumulation steps:* How many mini-batches you accumulate gradients on before doing an optimization step. This let's us simulate a larger batch size with less memory available.
+- *Learning rate:* A key hyper-parameter that controls the setp size of parameter updates during optimization. [[15](https://www.deeplearningbook.org/contents/optimization.html)]
+- *Batch size:* The number of training samples the model processes at once before computing a gradient. [[15](https://www.deeplearningbook.org/contents/optimization.html)]
+- *Gradient accumulation steps:* How many mini-batches you accumulate gradients on before doing an optimization step. This let's us simulate a larger batch size with less memory available. [[13](https://huggingface.co/docs/transformers/v4.32.1/en/perf_train_gpu_one)], [[14](https://huggingface.co/docs/trl/main/en/distributing_training)]
 
 Six different parameter configurations were tested, derived by explaining the experimental setup to Copilot and requesting suggestions for interesting configurations to try. The resulting configurations are presented below.
 
-| Configuration nr | learning_rate | per_device_train_batch_size | gradient_accumulation_steps | r | lora_alpha | lora_dropout |
+| Configuration nr | Learning Rate | Per-device Train Batch Size | Gradient Accumulation Steps | r | LoRA Alpha | LoRA Dropout |
 |----------|----------|----------|----------|----------|----------|----------|
 | 1    |    2e-4      |    16      |     4     |    8      |     16     |     0     |
 | 2    |     2e-4     |     16     |     2     |    8      |     16     |     0     |
@@ -126,4 +126,11 @@ In addition to the Llama-3.2-1B-Instruct model, we also tried fine-tuning the Ll
 - [8] https://github.com/mlabonne/llm-datasets?tab=readme-ov-file
 - [9] https://huggingface.co/datasets/gretelai/synthetic_text_to_sql
 - [10] https://huggingface.co/datasets/ambrosfitz/2k_grammar_corrections
+- [11] https://arxiv.org/abs/2106.09685
+- [12] https://huggingface.co/docs/peft/en/package_reference/lora
+- [13] https://huggingface.co/docs/transformers/v4.32.1/en/perf_train_gpu_one
+- [14] https://huggingface.co/docs/trl/main/en/distributing_training
+- [15] https://www.deeplearningbook.org/contents/optimization.html
+- [16] https://jmlr.org/papers/v15/srivastava14a.html
+  
 
